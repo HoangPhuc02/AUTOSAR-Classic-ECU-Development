@@ -62,7 +62,6 @@ flash: $(TARGET).bin
 
 # Xóa tất cả file build trong Tools/
 clean:
-	rm -rf $(BUILDDIR)/*.o $(TARGET).elf $(TARGET).bin
-	find $(BUILDDIR) -name "*.o" -type f -delete
+	rm -rf $(BUILDDIR)/*
 
 .PHONY: all clean flash
