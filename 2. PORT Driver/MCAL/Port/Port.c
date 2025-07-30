@@ -139,7 +139,7 @@ void Port_RefreshPortDirection(void) {
 }
 
 void Port_GetVersionInfo(Std_VersionInfoType* versioninfo) {
-    if (versioninfo == NULL) return;
+    if (versioninfo == NULL_PTR) return;
     versioninfo->vendorID         = PORT_VENDOR_ID;
     versioninfo->moduleID         = PORT_MODULE_ID;
     versioninfo->sw_major_version = PORT_SW_MAJOR_VERSION;
