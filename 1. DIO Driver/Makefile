@@ -17,6 +17,8 @@ CFLAGS = -mcpu=cortex-m3 -mthumb -O0 -g -Wall -ffreestanding -nostdlib \
          -IMCAL/Port \
          -ISPL/inc \
          -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
+CFLAGS += -IConfig/Port  \
+		  -IConfig
 
 # Linker script
 LDSCRIPT = Linker/stm32f103.ld
@@ -27,6 +29,8 @@ SRCS_C = main.c \
          MCAL/Dio/Dio.c \
          MCAL/Port/Port.c \
          $(wildcard SPL/src/*.c)
+SRCS_C += $(wildcard Config/Port/*.c)
+
 SRCS_S = Startup/startup_stm32f103.s
 
 # List of object files (đặt trong BUILDDIR)
