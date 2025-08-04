@@ -17,7 +17,8 @@
 *                                        INCLUDE FILES
 ==================================================================================================*/
 #include "Std_Types.h"
-
+#include "stm32f10x.h"
+#include "misc.h"
 
 /**
  * @details
@@ -159,7 +160,11 @@ typedef enum _Lin_SlaveErrorType
     LIN_ERR_INC_RESP        /**< Incomplete response */
 } Lin_SlaveErrorType;
 
-
+typedef enum _Lin_NodeType
+{
+    LIN_MASTER,  /**< LIN Master Node */
+    LIN_SLAVE    /**< LIN Slave Node */
+} Lin_NodeType;
 /*==================================================================================================
 *                                STRUCTURES AND OTHER TYPEDEFS
 ==================================================================================================*/
@@ -226,7 +231,7 @@ typedef struct
  * @brief Type definition for LIN channel identifier.
  *        Used to uniquely identify a LIN channel within the system.
  */
-typedef uint8 Lin_ChannelType;
+typedef uint16 Lin_ChannelType;
 
 /**
  * @typedef Lin_BaudRateType
@@ -249,9 +254,13 @@ typedef struct
 {
     Lin_ChannelType     LinChannelId;               /**< LIN Channel ID */
     Lin_BaudRateType    LinChannelBaudRate;         /**< LIN Channel Baud Rate */
-    USART_TypeDef*      LinHwChannel;               /**< Hardware USART Channel */
-    Lin_ClockRefType    LinClockRef;                /**< Clock Reference */
     boolean             LinChannelWakeupSupport;    /**< Wakeup Support */
+    Lin_NodeType        LinNodeType;                /**< Node Type (Master/Slave) */
+
+    Lin_ClockRefType    LinClockRef;                /**< Clock Reference */
+    USART_TypeDef*      LinHwChannel;               /**< Hardware USART Channel */
+
+
     uint8_t             IRQn;                   /**< USART IRQ number */
     uint8_t             IRQ_Priority;           /**< IRQ priority */
 } Lin_ChannelConfigType;
@@ -274,8 +283,8 @@ typedef struct
 
 typedef struct
 {
-    const Lin_ChannelConfigType* LinChannel;  /**< Pointer to channel configurations */
-    uint8 LinNumberOfChannels;                /**< Number of LIN channels */
+    const Lin_ChannelConfigType* LinChannel;    /**< Pointer to channel configurations */
+    uint8 LinNumberOfChannels;                  /**< Number of LIN channels */
 } Lin_ConfigType;
 
 /*==================================================================================================
@@ -287,6 +296,8 @@ typedef struct
 #define LIN_BAUD_RATE_19200                           (1U)    /* PA1 - ADC1_IN1 */
 #define LIN_BAUD_RATE_20000                           (2U)    /* PA2 - ADC1_IN2 */
 
+
+
 /* LIN Hardware Unit  */
 #define LIN_HW_UNIT_1                            (0U)    /* LIN hardware unit 1 */
 #define LIN_HW_UNIT_2                            (1U)    /* LIN hardware unit 2 */
@@ -294,6 +305,7 @@ typedef struct
 /* LIN Constants */
 #define LIN_MAX_HW_UNITS                      (2U)       /* Maximum number of LIN hardware units */
 #define LIN_MAX_HW_BAUD_RATES                 (20000)    /* Maximum number of LIN hardware baud rates 20Kbps*/
+#define LIN_MAX_DATA_LENGTH                    (8U)    /* Maximum data length for LIN frames */  
 /*==================================================================================================
 *                              VALIDATION MACROS                                                  *
 ==================================================================================================*/

@@ -81,7 +81,7 @@
  * @brief   Development Error Codes
  * @details Error codes for LIN driver development error detection
  */
-#define LIN_E_UNINIT                (0x00U) /**< API service used without module initialization */
+#define LIN_E_UNINIT                (0x00U) /**< API service called without module initialization */
 #define LIN_E_INVALID_CHANNEL       (0x02U) /**< API service used with an invalid or inactive channel parameter */
 #define LIN_E_INVALID_POINTER       (0x03U) /**< API service called with invalid configuration pointer */
 #define LIN_E_STATE_TRANSITION      (0x04U) /**< Invalid state transition for the current state */
@@ -92,9 +92,11 @@
  * @brief   Module State Definitions
  * @details Definitions for module initialization state
  */
-#define LIN_UNINIT                             (0U)
-#define LIN_INIT                               (1U)
+#define LIN_UNINIT                             (FALSE)
+#define LIN_INIT                               (TRUE)
 
+
+#define LIN_SYNC_BYTE                           0x55U /**< LIN Sync Byte */
 /*==================================================================================================
 *                                             ENUMS
 ==================================================================================================*/

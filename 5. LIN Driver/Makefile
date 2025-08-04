@@ -15,6 +15,10 @@ CFLAGS = -mcpu=cortex-m3 -mthumb -O0 -g -Wall -ffreestanding -nostdlib \
          -ICMSIS \
          -IMCAL/Port \
          -IMCAL/Lin \
+         -IConfig/Port \
+         -IConfig/Lin \
+		 -IConfig/Det \
+		 -IConfig \
          -ISPL/inc \
          -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER
 
@@ -26,8 +30,10 @@ LDFLAGS = -T$(LDSCRIPT) -nostdlib -Wl,--gc-sections
 SRCS_C = main.c \
          MCAL/Lin/Lin.c \
          MCAL/Port/Port.c \
-         $(wildcard SPL/src/*.c)
-		 
+         $(wildcard SPL/src/*.c) \
+         $(wildcard Config/Port/*.c) \
+         $(wildcard Config/Lin/*.c)
+
 SRCS_S = Startup/startup_stm32f103.s
 
 # List of object files (đặt trong BUILDDIR)

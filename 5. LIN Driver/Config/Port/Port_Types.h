@@ -76,7 +76,8 @@ typedef enum
     PORT_PIN_MODE_I2C,            /**< I2C communication mode */
     PORT_PIN_MODE_UART,           /**< UART communication mode */
     PORT_PIN_MODE_CAN,             /**< CAN communication mode */
-    PORT_PIN_MODE_LIN              /**< LIN communication mode */
+    PORT_PIN_MODE_LIN_TX,              /**< LIN communication mode */
+    PORT_PIN_MODE_LIN_RX          /**< LIN communication mode */
 } Port_PinModeType;
 
 /**

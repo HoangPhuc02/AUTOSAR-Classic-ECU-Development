@@ -24,7 +24,7 @@
 /**********************************************************
  * NUMBER OF PINS CONFIGURED
  **********************************************************/
-#define PortCfg_PinsCount    3U
+#define PortCfg_PinsCount    5U
 
 /**********************************************************
  * ARRAY OF PIN CONFIGURATIONS

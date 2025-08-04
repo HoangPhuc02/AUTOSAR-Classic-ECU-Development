@@ -23,7 +23,7 @@
 *                              STATIC VARIABLES                                        *
 ****************************************************************************************/
 static uint8_t Port_Initialized = 0;  /* Flag check initialization */
-static const Port_ConfigType* Port_Config = NULL_PTR; /* Pointer to the configuration structure */
+extern const Port_ConfigType* Port_Config = NULL_PTR; /* Pointer to the configuration structure */
 /****************************************************************************************
  *                              STATIC FUNCTION PROTOTYPES                             *
  ****************************************************************************************/
@@ -74,6 +74,29 @@ static void Port_SetModeDIO(const Port_PinConfigType* pinCfg, uint16_t pinMask) 
             GPIO_ResetBits(PORT_GET_PORT(pinCfg->PortNum), pinMask);
     }
 }
+static void Port_SetModeLinTx(const Port_PinConfigType* pinCfg, uint16_t pinMask) {
+    GPIO_InitTypeDef GPIO_InitStruct;
+
+    GPIO_TypeDef* GPIO_Port = PORT_GET_PORT(pinCfg->PortNum);
+    GPIO_InitStruct.GPIO_Pin = pinMask;
+    GPIO_InitStruct.GPIO_Speed = pinCfg->Speed;
+    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;
+
+    GPIO_Init(GPIO_Port, &GPIO_InitStruct);
+
+}
+
+static void Port_SetModeLinRx(const Port_PinConfigType* pinCfg, uint16_t pinMask) {
+    GPIO_InitTypeDef GPIO_InitStruct;
+
+    GPIO_TypeDef* GPIO_Port = PORT_GET_PORT(pinCfg->PortNum);
+    GPIO_InitStruct.GPIO_Pin = pinMask;
+    GPIO_InitStruct.GPIO_Speed = pinCfg->Speed;
+    GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+
+    GPIO_Init(GPIO_Port, &GPIO_InitStruct);
+
+}
 static void Port_ApplyPinConfig(const Port_PinConfigType* pinCfg) {
     uint16_t pinMask = PORT_GET_PIN_MASK(pinCfg->PinNum);
 
@@ -95,7 +118,12 @@ static void Port_ApplyPinConfig(const Port_PinConfigType* pinCfg) {
         case PORT_PIN_MODE_PWM :
         case PORT_PIN_MODE_SPI :
         case PORT_PIN_MODE_CAN :
-        case PORT_PIN_MODE_LIN :
+        case PORT_PIN_MODE_LIN_TX:
+            Port_SetModeLinTx(pinCfg, pinMask);
+            break;
+        case PORT_PIN_MODE_LIN_RX:
+            Port_SetModeLinRx(pinCfg, pinMask);
+            break;
         default:
             return; // Không hỗ trợ mode này
     }

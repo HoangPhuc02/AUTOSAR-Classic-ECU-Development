@@ -22,8 +22,14 @@
 /****************************************************************************************
 *                              VERSION INFORMATION                                     *
 ****************************************************************************************/
-
-
+#define STD_TYPES_VENDOR_ID                     (0x0001U)
+#define STD_TYPES_MODULE_ID                     (0x00C0U)
+#define STD_TYPES_AR_RELEASE_MAJOR_VERSION      (4U)
+#define STD_TYPES_AR_RELEASE_MINOR_VERSION      (4U)
+#define STD_TYPES_AR_RELEASE_REVISION_VERSION   (0U)
+#define STD_TYPES_SW_MAJOR_VERSION              (1U)
+#define STD_TYPES_SW_MINOR_VERSION              (0U)
+#define STD_TYPES_SW_PATCH_VERSION              (0U)
 /****************************************************************************************
 *                              BOOLEAN TYPE DEFINITIONS                                *
 ****************************************************************************************/
