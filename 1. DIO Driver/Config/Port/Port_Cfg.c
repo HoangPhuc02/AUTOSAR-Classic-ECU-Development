@@ -37,14 +37,36 @@ const Port_ConfigType PortCfg_Port = {
 
 const Port_PinConfigType PortCfg_Pins[PortCfg_PinsCount] = {
     {
+        .PortNum = PORT_ID_A,
+        .PinNum = 0,
+        .Mode = PORT_PIN_MODE_ADC,
+        .Direction = PORT_PIN_IN,
+        .DirectionChangeable = 0,
+        .Level = PORT_PIN_LEVEL_HIGH,
+        .Pull = PORT_PIN_PULL_NONE,
+        .ModeChangeable = 1,
+        .Speed = PORT_PIN_SPEED_10MHZ,
+    },
+    {
+        .PortNum = PORT_ID_A,
+        .PinNum = 8,
+        .Mode = PORT_PIN_MODE_PWM,
+        .Direction = PORT_PIN_OUT,
+        .DirectionChangeable = 0,
+        .Level = PORT_PIN_LEVEL_HIGH,
+        .Pull = PORT_PIN_PULL_NONE,
+        .ModeChangeable = 1,
+        .Speed = PORT_PIN_SPEED_50MHZ,
+    },
+    {
         .PortNum = PORT_ID_C,
         .PinNum = 13,
         .Mode = PORT_PIN_MODE_DIO,
         .Direction = PORT_PIN_OUT,
         .DirectionChangeable = 0,
-        .Level = PORT_PIN_LEVEL_LOW,
+        .Level = PORT_PIN_LEVEL_HIGH,
         .Pull = PORT_PIN_PULL_NONE,
         .ModeChangeable = 1,
-        .Speed = PORT_PIN_SPEED_50MHZ,
+        .Speed = PORT_PIN_SPEED_10MHZ,
     }
 };

@@ -8,7 +8,7 @@
 *               designed to work with STM32F103 using SPL.
 *               The driver allows configuration, mode change, direction change,
 *               refresh, and version information retrieval for port/pin.
-* Version     : 1.0.0
+* Version     : 2.0.0
 * Date        : 20/06/2025
 * Author      : hoangphuc540202@gmail.com
 * Github      : https://github.com/HoangPhuc02

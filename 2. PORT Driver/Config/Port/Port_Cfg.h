@@ -8,8 +8,9 @@
 *               according to AUTOSAR standards, designed for STM32F103
 *               using the Standard Peripheral Library (SPL).
 *
-* Version     : 1.0.0
+* Version     : 2.0.0
 * Date        : 20/06/2025
+* Update      : 07/09/2025
 * Author      : hoangphuc540202@gmail.com
 * Github      : https://github.com/HoangPhuc02
  **************************************************************************************/

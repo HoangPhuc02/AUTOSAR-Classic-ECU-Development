@@ -8,7 +8,7 @@
 *               used by the Port driver according to AUTOSAR standards.
 *               Designed for STM32F103 using Standard Peripheral Library (SPL).
 *
-* Version     : 1.0.0
+* Version     : 2.0.0
 * Date        : 20/06/2025
 * Author      : hoangphuc540202@gmail.com
 * Github      : https://github.com/HoangPhuc02
@@ -34,7 +34,7 @@
     * @note This type is used to identify a specific pin in the PORT driver.
     *       (0..47: A0..A15, B0..B15, C0..C15)
 */
-typedef uint8 Port_PinType;
+typedef uint16 Port_PinType;
 /*
     * @typedef Port_PortType
     * @brief Type for PORT ID.
